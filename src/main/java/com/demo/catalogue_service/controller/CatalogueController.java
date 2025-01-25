@@ -29,4 +29,16 @@ public class CatalogueController {
         CatalogueEntity addedProductType = catalogueService.addNewProductType(newProductType);
         return new ResponseEntity<>(addedProductType, HttpStatus.CREATED);
     }
+
+    // Endpoint to get a product type by ID
+    @GetMapping("/product-type/{id}")
+    public ResponseEntity<CatalogueEntity> getProductTypeById(@PathVariable Long id) {
+        CatalogueEntity productType = catalogueService.getProductTypeById(id);
+        if (productType != null) {
+            return new ResponseEntity<>(productType, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

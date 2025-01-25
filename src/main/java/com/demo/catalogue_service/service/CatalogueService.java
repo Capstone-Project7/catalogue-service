@@ -22,4 +22,8 @@ public class CatalogueService {
         return catalogueRepository.saveAndFlush(newProductType);
     }
 
+    public CatalogueEntity getProductTypeById(Long id) {
+        return catalogueRepository.findById(id).orElse(null);
+    }
+
 }
